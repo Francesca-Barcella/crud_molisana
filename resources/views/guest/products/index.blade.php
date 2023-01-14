@@ -7,7 +7,7 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @forelse ($products as $product)
         <div class="col">
-            <a href="{{ route ('products.show', $product->id)}}">
+            <a href="{{ route ('guest.products.show', $product->id)}}">
                 <div class="card">
                     <img src="{{ $product->src }}" alt="{{ $product->title }}" class="card-img-top">
                     <div class="card-body">
