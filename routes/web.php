@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,11 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::get('/about', [PageController::class, 'about'])->name('about');
 
-
-Route::get('/products', function () {
+/* Route::get('/products', function () {
     return view('products');
-})->name('products');
+})->name('products'); */
+
+Route::resource('products', ProductController::class);
 
 Route::get('/news', function () {
     return view('news');
