@@ -70,7 +70,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        
+
         return view('admin.products.edit', compact('product'));
     }
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         //dd($request->all(), $product);
-        
+
         $data = [
             'title' => $request['title'],
             'src' => $request['src'],
@@ -107,6 +107,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return to_route('products.index')->with('message', "$product->title deleted successfully");
     }
 }
