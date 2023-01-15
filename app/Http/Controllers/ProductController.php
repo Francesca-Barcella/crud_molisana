@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -16,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderByDesc('id')->get();
         
         return view('admin.products.index', compact('products'));
     }
@@ -37,9 +36,19 @@ class ProductController extends Controller
      * @param  \App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-      dd($request->all());
+      //dd($request->all());
+
+      $product = new Product();
+      $product->title = $request['title'];
+      $product->src = $request['src'];
+      $product->description = $request['description'];
+      $product->type = $request['type'];
+      $product->weight = $request['weight'];
+      $product->save();
+
+        return to_route('products.index');
     }
 
     /**
