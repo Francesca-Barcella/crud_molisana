@@ -4,9 +4,9 @@
 
 <div class="container">
     <div class="heading d-flex justify-content-between">
-        <h2>Pasta</h2>
+        <h2>Posts</h2>
         <div>
-            <a href="{{route('products.create')}}" class="btn btn-primary">Add New Pasta</a>
+            <a href="{{route('posts.create')}}" class="btn btn-primary">Add New Post</a>
         </div>
 
     </div>
@@ -26,13 +26,13 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @forelse ($products as $product)
+                @forelse ($posts as $post)
                 <tr class="table-primary">
-                    <td scope="row">{{$product->id}}</td>
-                    <td>{{$product->title}}</td>
-                    <td><img src="{{$product->src}}" alt="{{$product->title}}" width="80"></td>
+                    <td scope="row">{{$post->id}}</td>
+                    <td>{{$post->title}}</td>
+                    <td><img src="{{$post->cover}}" alt="{{$post->title}}" width="80"></td>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="{{route('guest.products.show', $product->id)}}">
+                        <a class="btn btn-primary btn-sm" href="#">
                             <i class="fas fa-eye  fa-sm fa-fw"></i>
                         </a>
                         <a class="btn btn-secondary btn-sm" href="#">
@@ -41,7 +41,6 @@
                         <a class="btn btn-danger btn-sm" href="#">
                             <i class="fas fa-trash  fa-sm fa-fw"></i>
                         </a>
-
                     </td>
                 </tr>
                 @empty

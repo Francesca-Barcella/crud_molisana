@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderByDesc('id')->get();
-        
+
         return view('admin.products.index', compact('products'));
     }
 
@@ -27,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-       return view('admin.products.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -38,15 +38,15 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-      //dd($request->all());
+        //dd($request->all());
 
-      $product = new Product();
-      $product->title = $request['title'];
-      $product->src = $request['src'];
-      $product->description = $request['description'];
-      $product->type = $request['type'];
-      $product->weight = $request['weight'];
-      $product->save();
+        $product = new Product();
+        $product->title = $request['title'];
+        $product->src = $request['src'];
+        $product->description = $request['description'];
+        $product->type = $request['type'];
+        $product->weight = $request['weight'];
+        $product->save();
 
         return to_route('products.index');
     }

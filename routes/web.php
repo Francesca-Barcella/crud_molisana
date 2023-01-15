@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Guest\ProductController as GuestProductController;
 
@@ -31,6 +32,14 @@ Route::get('products/{product}', [GuestProductController::class, 'show'])->name(
 
 Route::resource('admin/products', ProductController::class);
 
+//rotta per admin sezione post
+Route::get('admin/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('admin/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('admin/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('admin/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+
+//rotta per ospite sito
 Route::get('/news', function () {
     return view('news');
 })->name('news');
