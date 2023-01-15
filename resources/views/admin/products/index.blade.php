@@ -30,7 +30,7 @@
                 <tr class="table-primary">
                     <td scope="row">{{$product->id}}</td>
                     <td>{{$product->title}}</td>
-                    <td><img src="{{$product->src}}" alt="{$product->title}}" width="80"></td>
+                    <td><img src="{{$product->src}}" alt="{{$product->title}}" width="80"></td>
                     <td>view - edit - cancel</td>
                 </tr>
                 @empty
