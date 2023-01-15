@@ -48,7 +48,7 @@ class ProductController extends Controller
         $product->weight = $request['weight'];
         $product->save();
 
-        return to_route('products.index');
+        return to_route('products.index')->with('message', "$product->title update successfully");
     }
 
     /**
@@ -70,7 +70,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -82,7 +83,20 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        //dd($request->all(), $product);
+        
+        $data = [
+            'title' => $request['title'],
+            'src' => $request['src'],
+            'description' => $request['description'],
+            'type' => $request['type'],
+            'weight' => $request['weight'],
+            'cooking_time' => $request['cooking_time'],
+        ];
+
+        //dd($data);
+        $product->update($data);
+        return to_route('products.index')->with('message', "$product->title update successfully");
     }
 
     /**

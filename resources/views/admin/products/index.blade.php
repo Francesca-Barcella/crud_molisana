@@ -8,8 +8,15 @@
         <div>
             <a href="{{route('products.create')}}" class="btn btn-primary">Add New Pasta</a>
         </div>
-
     </div>
+
+    <!-- messaggio avvennuta modifica -->
+    @if(session('message'))
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>{{session('message')}}</strong>
+    </div>
+    @endif
 
     <div class="table-responsive-md">
         <table class="table table-striped
@@ -35,7 +42,7 @@
                         <a class="btn btn-primary btn-sm" href="{{route('guest.products.show', $product->id)}}">
                             <i class="fas fa-eye  fa-sm fa-fw"></i>
                         </a>
-                        <a class="btn btn-secondary btn-sm" href="#">
+                        <a class="btn btn-secondary btn-sm" href="{{route('products.edit', $product->id)}}">
                             <i class="fas fa-pencil  fa-sm fa-fw"></i>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#">
